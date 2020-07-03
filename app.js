@@ -11,9 +11,9 @@
 */
 
 // ცვლადები
-var scores, roundScore, activePlayer, dice, gamePlaying;  // ზოგადი ცვლადები
-var query = document.querySelector; // ქუერი სელექტორები
-var getID = document.getElementById; // იდ სელექტორები
+let scores, roundScore, activePlayer, dice, gamePlaying;  // ზოგადი ცვლადები
+const query = document.querySelector; // ქუერი სელექტორები
+const getID = document.getElementById; // იდ სელექტორები
 
 // ივენთები
 query('.btn-roll').addEventListener('click', btn) // კლიკ ივენთი
@@ -51,7 +51,7 @@ function btn(){
 
         dice = Math.floor(Math.random() * 6) + 1; // რანდომული რიცხვი
 
-        var diceDom = query('.dice'); // ცვალიდის შექმნა რომ გავამარტივოთ კოდი
+        const diceDom = query('.dice'); // ცვალიდის შექმნა რომ გავამარტივოთ კოდი
         diceDom.style.display = 'block'; // გაქრობა
         diceDom.src = 'dice-' + dice + '.png'; // ფოტოს შეცვლა
     
