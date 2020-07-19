@@ -16,7 +16,7 @@ const query = document.querySelector; // ქუერი სელექტო�
 const getID = document.getElementById; // იდ სელექტორები
 
 // ივენთები
-query('.btn-roll').addEventListener('click', btn) // კლიკ ივენთი
+document.querySelector('.btn-roll').addEventListener('click', btn) // კლიკ ივენთი
 query('.btn-hold').addEventListener('click', btnHold) // კლიკ ივენთი
 query('.btn-new').addEventListener('click', clickFunction) // კლიკ ივენთი
 
