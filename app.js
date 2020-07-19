@@ -17,8 +17,8 @@ const getID = document.getElementById; // იდ სელექტორებ�
 
 // ივენთები
 document.querySelector('.btn-roll').addEventListener('click', btn) // კლიკ ივენთი
-query('.btn-hold').addEventListener('click', btnHold) // კლიკ ივენთი
-query('.btn-new').addEventListener('click', clickFunction) // კლიკ ივენთი
+document.querySelector('.btn-hold').addEventListener('click', btnHold) // კლიკ ივენთი
+document.querySelector('.btn-new').addEventListener('click', clickFunction) // კლიკ ივენთი
 
 init(); // ფუნქციის გამოძახება სათავეში
 
@@ -28,21 +28,26 @@ function init(){
     roundScore = 0; // საწყისი რაუნდის ქულები
     gamePlaying = true; // გეიმფლეის ბულეანი
     
-    query('.dice').style.display = 'none'; // ამით ვმალავთ კამათლის ფოტოს თამაშის დასაწყისში
-    getID('score-0').textContent = '0'; // ინტერფეისის 0 ზე დაყენება
-    getID('score-1').textContent = '0'; // ინტერფეისის 0 ზე დაყენება
-    getID('current-0').textContent = '0'; // ინტერფეისის 0 ზე დაყენება
-    getID('current-1').textContent = '0'; // ინტერფეისის 0 ზე დაყენება
-    query('#name-0').textContent = 'Player 1'; // ინტერფეისში სახელის შეცვლა
-    query('#name-1').textContent = 'Player 2'; // ინტერფეისში სახელის შეცვლა
-    query('.player-0-panel').classList.remove('winner'); // winner კლასის წაშლა
-    query('.player-1-panel').classList.remove('winner'); // winner კლასის წაშლა
-    query('.player-1-panel').classList.remove('active'); // active კლასის წაშლა
-    query('.player-0-panel').classList.remove('active'); // active კლასის წაშლა
-    query('.player-1-panel').classList.add('active'); // active კლასის დამატება
+    document.querySelector('.dice').style.display = 'none'; // ამით ვმალავთ კამათლის ფოტოს თამაშის დასაწყისში
+    document.querySelector('score-0').textContent = '0'; // ინტერფეისის 0 ზე დაყენება
+    document.querySelector('score-1').textContent = '0'; // ინტერფეისის 0 ზე დაყენება
+    document.querySelector('current-0').textContent = '0'; // ინტერფეისის 0 ზე დაყენება
+    document.querySelector('current-1').textContent = '0'; // ინტერფეისის 0 ზე დაყენება
+    document.querySelector('#name-0').textContent = 'Player 1'; // ინტერფეისში სახელის შეცვლა
+    document.querySelector('#name-1').textContent = 'Player 2'; // ინტერფეისში სახელის შეცვლა
+    document.querySelector('.player-0-panel').classList.remove('winner'); // winner კლასის წაშლა
+    document.querySelector('.player-1-panel').classList.remove('winner'); // winner კლასის წაშლა
+    document.querySelector('.player-1-panel').classList.remove('active'); // active კლასის წაშლა
+    document.querySelector('.player-0-panel').classList.remove('active'); // active კლასის წაშლა
+    document.querySelector('.player-1-panel').classList.add('active'); // active კლასის დამატება
 
 }
 
+function clickFunction() {
+
+    init(); // ინიტ ფუნქციის გამოძახება
+
+}
 
 
 function btn(){
@@ -51,14 +56,14 @@ function btn(){
 
         dice = Math.floor(Math.random() * 6) + 1; // რანდომული რიცხვი
 
-        const diceDom = query('.dice'); // ცვალიდის შექმნა რომ გავამარტივოთ კოდი
+        const diceDom = document.querySelector('.dice'); // ცვალიდის შექმნა რომ გავამარტივოთ კოდი
         diceDom.style.display = 'block'; // გაქრობა
         diceDom.src = 'dice-' + dice + '.png'; // ფოტოს შეცვლა
     
         if (dice !== 1) {
     
             roundScore += dice; // += იგივეა რაც  roundscore = roundscore + dice
-            query('#current-' + activePlayer).textContent = roundScore; // მანიპულირებას ვახდენთ და ვსვამთ ტექსტს დინამიურად
+            document.querySelector('#current-' + activePlayer).textContent = roundScore; // მანიპულირებას ვახდენთ და ვსვამთ ტექსტს დინამიურად
     
         } else {
     
@@ -79,13 +84,13 @@ function nextPlayer() {
     activePlayer === 0 ? activePlayer = 1 : activePlayer = 0; //შემდეგი მოთამაშე ternery operator-ით
     roundScore = 0; // რაუნდის ქულა რესტარტდება JS-ში
         
-    getID('current-0').textContent = '0'; // ინტერფეისში რესტარტდება ქულა
-    getID('current-1').textContent = '0'; // ინტერფეისში რესტარტდება ქულა
+    document.querySelector('current-0').textContent = '0'; // ინტერფეისში რესტარტდება ქულა
+    document.querySelector('current-1').textContent = '0'; // ინტერფეისში რესტარტდება ქულა
 
-    query('.player-0-panel').classList.toggle('active'); // აქტიური მოთამაშის თაგლი
-    query('.player-1-panel').classList.toggle('active'); // აქტიური მოთამაშის თაგლი
+    document.querySelector('.player-0-panel').classList.toggle('active'); // აქტიური მოთამაშის თაგლი
+    document.querySelector('.player-1-panel').classList.toggle('active'); // აქტიური მოთამაშის თაგლი
 
-    query('.dice').style.display = 'none'; // მოთამაშის ცვლილების დროს მალავს კამათელს
+    document.querySelector('.dice').style.display = 'none'; // მოთამაშის ცვლილების დროს მალავს კამათელს
 }
 
 function btnHold() {
@@ -93,14 +98,14 @@ function btnHold() {
     if (gamePlaying) {
 
         scores[activePlayer] += roundScore; // რაუნდის ქულის გლობალურ ქულაში დამატება
-        query('#score-' + activePlayer).textContent = scores[activePlayer]; // ინტერფეისში დამატება ქულის
+        document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer]; // ინტერფეისში დამატება ქულის
     
         if (scores[activePlayer] >= 100) {
     
-            query('#name-' + activePlayer).textContent = 'Winner:'; // ვინც მოიგებს გამოსახავს მოგებულს
-            query('.dice').style.display = 'none'; // ფოტოს წაშლა
-            query('.player-' + activePlayer + '-panel').classList.add('winner'); // winner კლასის დამატება
-            query('.player-' + activePlayer + '-panel').classList.remove('active'); // active კლასის წაშლა
+            document.querySelector('#name-' + activePlayer).textContent = 'Winner:'; // ვინც მოიგებს გამოსახავს მოგებულს
+            document.querySelector('.dice').style.display = 'none'; // ფოტოს წაშლა
+            document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner'); // winner კლასის დამატება
+            document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active'); // active კლასის წაშლა
             gamePlaying = false;
     
         } else {   
@@ -115,11 +120,6 @@ function btnHold() {
 
 }
 
-function clickFunction() {
-
-    init(); // ინიტ ფუნქციის გამოძახება
-
-}
 // ალტერნატიული კოდი
 
 // document.querySelector('#current-' + activePlayer).textContent = dice; // მანიპულირებას ვახდენთ და ვსვამთ ტექსტს დინამიურად
